@@ -1,6 +1,9 @@
+"use client";
+
 import Dashboard from "@/components/dashboard/Content/Content";
 import Navbar from "@/components/dashboard/Navbar/Navbar";
 import Sidebar from "@/components/dashboard/sidebar/Sidebar";
+import withAuth from "@/lib/withAuth";
 import React from "react";
 
 function Page() {
@@ -19,4 +22,4 @@ function Page() {
   );
 }
 
-export default Page;
+export default withAuth(Page);
