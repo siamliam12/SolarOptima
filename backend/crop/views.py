@@ -38,6 +38,10 @@ def get_power_data(request):
         data = response.json()
         return Response(data)
  
+@api_view(['GET','POST'])
+def root(request):
+    context = {'message': 'Welcome to the SolarOoptima API'}
+    return Response(context)
 
 
 @api_view(['GET', 'POST'])
