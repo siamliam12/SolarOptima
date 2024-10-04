@@ -5,24 +5,23 @@ import React from "react";
 
 const templatesData = [
   {
-    imageUrl: "https://via.placeholder.com/200",
-    title: "Sample Title 1",
-    description: "This is a short description of the content.",
-    data: ["First bullet point", "Second bullet point", "Third bullet point"],
+    imageUrl: "/images/rice.avif",
+    title: "Rice",
+    
+    data: ["Soil: Prefers clayey or loamy soil with good water retention. Well-drained alluvial soil is ideal.", "pH: Slightly acidic to neutral (5.5 to 7.0)", "Temperature: Requires a warm temperature, ideally between 20°C to 35°C, with high humidity."],
     imagePosition: "left",
   },
   {
-    imageUrl: "https://via.placeholder.com/200",
-    title: "Sample Title 2",
-    description: "This is a short description of the content.",
-    data: ["First bullet point", "Second bullet point", "Third bullet point"],
+    imageUrl: "/images/Mangoes.webp",
+    title: "Mango",
+    
+    data: ["Soil: Thrives in well-drained, deep loamy, and sandy loam soils with good aeration.", "pH: Prefers a slightly acidic to neutral range (5.5 to 7.5)", "Temperature: Grows well in tropical and subtropical regions, requiring temperatures between 24°C and 30°C."],
     imagePosition: "right",
   },
   {
-    imageUrl: "https://via.placeholder.com/200",
-    title: "Sample Title 3",
-    description: "This is a short description of the content.",
-    data: ["First bullet point", "Second bullet point", "Third bullet point"],
+    imageUrl: "/images/coffee.jpg",
+    title: "Coffee",
+    data: ["Soil: Requires well-drained, fertile soil rich in organic matter. Loamy soil with good water-holding capacity is ideal.", "pH: Prefers slightly acidic soil (5.2 to 6.0).", "Temperature: Best suited to a moderate climate, with ideal temperatures between 18°C to 24°C."],
     imagePosition: "left",
   },
 ];
