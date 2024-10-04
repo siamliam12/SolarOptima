@@ -1,9 +1,20 @@
-import React from 'react'
+import Dashboard from '@/components/dashboard/Content/Content';
+import Navbar from '@/components/dashboard/Navbar/Navbar';
+import Sidebar from '@/components/dashboard/sidebar/Sidebar';
+import React from 'react';
 
-function page() {
+function Page() {
   return (
-    <div>page</div>
-  )
+    <>
+      <Navbar />
+      <div className="flex">
+        <Sidebar />
+        <main className="flex-1 p-4">
+          <Dashboard />
+        </main>
+      </div>
+    </>
+  );
 }
 
-export default page
+export default Page;
