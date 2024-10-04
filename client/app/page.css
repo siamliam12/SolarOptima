@@ -5,7 +5,7 @@
 }
 
 .landing-page-hero-bg-child {
-  @apply relative z-20 backdrop-blur-md;
+  @apply relative z-20 ;
 }
 
 .landing-page-hero-bg-circle {
@@ -14,7 +14,7 @@
 }
 
 .star {
-  @apply w-2 h-2 bg-white rounded-full absolute;
+  @apply w-2 h-2 bg-white rounded-full absolute z-10;
   animation: twinkle 3s infinite ease-in-out;
 }
 

@@ -2,6 +2,8 @@ import HeroSection from "@/components/Home/HeroSection/HeroSection";
 import Navbar from "@/components/Home/Navbar/Navbar";
 import "./page.css";
 import ProblemSection from "@/components/Home/ProblemSection/ProblemSection";
+import Features from "@/components/Home/FeatureSection/FeatureSection";
+import Footer from "@/components/Home/Footer/Footer";
 
 export default function Home() {
   const stars = Array.from({ length: 100 }, (_, i) => (
@@ -26,6 +28,8 @@ export default function Home() {
         </div>
       </div>
       <ProblemSection />
+      <Features />
+      <Footer />
     </>
   );
 }

@@ -1,0 +1,24 @@
+{
+  "features": [
+    {
+      "title": "Crop Recommendation",
+      "description": "Recommends the best crops to grow based on soil, weather, and location."
+    },
+    {
+      "title": "Crop Yield Prediction",
+      "description": "Predicts crop yields to optimize resources and maximize productivity."
+    },
+    {
+      "title": "Disaster Prediction",
+      "description": "Analyzes water-related disasters like droughts and floods using advanced analytics."
+    },
+    {
+      "title": "Solar Impact Analysis",
+      "description": "Maps and analyzes solar radiation to predict its effects on crops and ecosystems."
+    },
+    {
+      "title": "Data Visualization",
+      "description": "Visualizes data with interactive graphs, helping in clear analysis and prediction."
+    }
+  ]
+}
