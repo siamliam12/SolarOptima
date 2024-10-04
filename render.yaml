@@ -1,0 +1,22 @@
+databases:
+  - name: solarOptima
+    plan: free
+    databaseName: backendServer
+    user: siamliam12
+
+services:
+  - type: web
+    plan: free
+    name: solarOptima
+    runtime: python
+    buildCommand: "./backend/build.sh"
+    startCommand: "python -m gunicorn api.asgi:application -k uvicorn.workers.UvicornWorker"
+    envVars:
+      - key: DATABASE_URL
+        fromDatabase:
+          name: api
+          property: connectionString
+      - key: SECRET_KEY
+        generateValue: true
+      - key: WEB_CONCURRENCY
+        value: 4

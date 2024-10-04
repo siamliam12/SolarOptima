@@ -8,8 +8,10 @@ from rest_framework.response import Response
 from django.views.decorators.csrf import csrf_exempt
 import requests
 from .serializers import FormDataSerializer
-from .crop_recommendation import Predictions
+# from .crop_recommendation import Predictions
 from .models import FormData
+from .new_crop_recommendation import Predictions
+
 @csrf_exempt
 @api_view(['GET','POST'])
 def get_power_data(request):
@@ -28,7 +30,7 @@ def get_power_data(request):
         'format': 'JSON',
         'latitude': latitude,
         'longitude': longitude,
-        'parameters':'TS,T2M,PS,WS2M,CLOUD_AMT,WS10M',
+        'parameters':'TS,T2M,PS,WS2M,CLOUD_AMT,WS10M,RH2M',
         'community':'ag', 
         }
         response = requests.get(url, params=params)
@@ -78,7 +80,7 @@ def predict_crop(request):
         humidity = data['properties']['parameter']['RH2M']['202201']
         if formdata:
             crop = Predictions(formdata.nitrogen,formdata.phosphorous,formdata.potasium,temperature,humidity,formdata.ph)
-            result = crop.naiveBayesMethod()
-            print(result)
-            return Response({'Crop':result})
+            # result = crop.main()
+            # print(result)
+            return Response({'Crop':crop.main()})
         return Response({'Error': 'No form data found for this user.'}, status=404)

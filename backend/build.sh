@@ -10,7 +10,7 @@ python -m pip install --upgrade pip
 python ./manage.py collectstatic --no-input
 
 # Apply any outstanding database migrations
-python ./manage.py makemigrations PantryPro
+python ./manage.py makemigrations 
 python ./manage.py migrate
 
 # gunicorn api.asgi:application -k uvicorn.workers.UvicornWorker
