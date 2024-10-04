@@ -2,16 +2,29 @@
 
 import { useState } from "react";
 import Link from "next/link";
+import { signIn } from "next-auth/react";
 
 export default function LoginPage() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    // Handle form submission logic here
-    console.log("Email:", email);
-    console.log("Password:", password);
+    try {
+      const result = await signIn("credentials", {
+        redirect: false,
+        email,
+        password,
+      });
+
+      if (result.error) {
+        console.error("Error logging in:", result.error);
+      } else {
+        window.location.href = "/dashboard";
+      }
+    } catch (error) {
+      console.error("Error logging in:", error);
+    }
   };
 
   return (
@@ -57,7 +70,8 @@ export default function LoginPage() {
         </form>
         <p className="mt-4 text-center">
           Not registered?{" "}
-          <Link href="/register" className="text-blue-400 hover:underline">Sign up
+          <Link href="/register" className="text-blue-400 hover:underline">
+            Sign up
           </Link>
         </p>
       </div>
