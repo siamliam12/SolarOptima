@@ -6,7 +6,7 @@ const Navbar = () => {
       <div className="text-xl font-bold">SolarOptima</div>
       <div className="flex items-center">
         <img
-          src="https://via.placeholder.com/40"
+          src="/images/user.png"
           alt="User Profile"
           className="rounded-full w-10 h-10"
         />
