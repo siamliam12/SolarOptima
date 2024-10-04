@@ -1,7 +1,7 @@
 import HeroSection from "@/components/Home/HeroSection/HeroSection";
 import Navbar from "@/components/Home/Navbar/Navbar";
 import "./page.css";
-import ProblemSection from "@/components/ProblemSection/ProblemSection";
+import ProblemSection from "@/components/Home/ProblemSection/ProblemSection";
 
 export default function Home() {
   const stars = Array.from({ length: 100 }, (_, i) => (
