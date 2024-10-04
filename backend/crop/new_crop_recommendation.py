@@ -103,11 +103,11 @@ class Predictions:
 
             print("\nTop 3 recommended crops for the given conditions:")
             for crop, probability in recommended_crops:
-                return print(f"{crop}: {probability:.2f}")
+                return f"{crop}: {probability:.2f}"
+
+        # print("Thank you for using the Crop Recommendation System!")
 
 
-
-        print("Thank you for using the Crop Recommendation System!")
 
 # crop = Predictions(104,18, 30, 23.603016, 60.3, 6.7)
 # crop.main()
