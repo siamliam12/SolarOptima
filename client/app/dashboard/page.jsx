@@ -10,7 +10,7 @@ function Page() {
         <Navbar />
         <div className="flex">
           <Sidebar className="fixed" />
-          <main className="flex-1 p-4">
+          <main className="flex-1 p-4 bg-[#04092f] h-full">
             <Dashboard />
           </main>
         </div>

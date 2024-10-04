@@ -38,7 +38,7 @@ const PieChart = () => {
     responsive: true,
     plugins: {
       legend: {
-        position: "top",
+        display: false, // Hide the legend
       },
       title: {
         display: true,
