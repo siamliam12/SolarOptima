@@ -40,13 +40,13 @@ const Dashboard = () => {
             ]}
           />
         </div>
-        <div className="bg-[#040936] border-[#151a44] row-span-2 col-span-2 shadow-xl text-white p-4 rounded-md flex flex-col justify-center items-center h-[200px]">
+        <div className="bg-[#040936] border-[#151a44] row-span-2 col-span-2 shadow-xl text-white p-4 rounded-md">
           <OutcomeComponent />
         </div>
 
         <div className="bg-[#040936] border-[#151a44] shadow-xl text-white p-4 rounded-md flex flex-col justify-center items-center h-[200px]">
           <ColumnChart
-            title="Sales Data"
+            title="Surface Pressure"
             labels={[
               "January",
               "February",
