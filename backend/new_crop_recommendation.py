@@ -32,7 +32,7 @@ def generate_synthetic_data(num_samples=1000):
         'temperature': np.random.uniform(20, 40, num_samples),
         'humidity': np.random.uniform(40, 90, num_samples),
         'ph': np.random.uniform(5, 8, num_samples),
-        'rainfall': np.random.uniform(50, 300, num_samples)
+        # 'rainfall': np.random.uniform(50, 300, num_samples)
     }
     
     df = pd.DataFrame(data)
@@ -79,45 +79,37 @@ def recommend_crop(rf_model, le, input_data):
     top_3_probs = probabilities[top_3_indices]
     return list(zip(top_3_crops, top_3_probs))
 
+class Predictions:
+    def __init__(self,n,p,k,temperature,humidity,ph):
+        self.n = n
+        self.p = p
+        self.k = k
+        self.temperature = temperature
+        self.humidity = humidity
+        self.ph = ph
 
-# Function to get user input for the crop recommendation
-def get_user_input():
-    try:
-        N = float(input("Enter Nitrogen (N) value: "))
-        P = float(input("Enter Phosphorus (P) value: "))
-        K = float(input("Enter Potassium (K) value: "))
-        temperature = float(input("Enter temperature (°C): "))
-        humidity = float(input("Enter humidity (%): "))
-        ph = float(input("Enter soil pH: "))
-        rainfall = float(input("Enter rainfall (mm): "))
-    except ValueError:
-        print("Invalid input. Please enter numeric values.")
-        return get_user_input()  # Retry
-    return N, P, K, temperature, humidity, ph, rainfall
+    def main(self):
+        print("Welcome to the Crop Recommendation System!")
+        
+        # Generate synthetic data
+        df = generate_synthetic_data(num_samples=1000)
+        
+        X, y_encoded, le = prepare_data(df)
+        model = train_model(X, y_encoded)
 
+        while True:
+            input_data = [self.n,self.p,self.k,self.temperature,self.humidity,self.ph]
+            recommended_crops = recommend_crop(model, le, input_data)
 
-def main():
-    print("Welcome to the Crop Recommendation System!")
-    
-    # Generate synthetic data
-    df = generate_synthetic_data(num_samples=1000)
-    
-    X, y_encoded, le = prepare_data(df)
-    model = train_model(X, y_encoded)
-
-    while True:
-        input_data = get_user_input()
-        recommended_crops = recommend_crop(model, le, input_data)
-
-        print("\nTop 3 recommended crops for the given conditions:")
-        for crop, probability in recommended_crops:
-            print(f"{crop}: {probability:.2f}")
-
-        if input("\nWould you like to make another prediction? (y/n): ").lower() != 'y':
-            break
-
-    print("Thank you for using the Crop Recommendation System!")
+            print("\nTop 3 recommended crops for the given conditions:")
+            for crop, probability in recommended_crops:
+                print(f"{crop}: {probability:.2f}")
 
 
-if __name__ == "__main__":
-    main()
+
+        print("Thank you for using the Crop Recommendation System!")
+
+crop = Predictions(104,18, 30, 23.603016, 60.3, 6.7)
+crop.main()
+# if __name__ == "__main__":
+#     main()
