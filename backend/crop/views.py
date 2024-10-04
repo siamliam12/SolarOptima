@@ -14,16 +14,20 @@ from .models import FormData
 @api_view(['GET','POST'])
 def get_power_data(request):
     if request.method == 'POST':
-        req = request.data
-        lon = req.get('lon')
-        lat = req.get('lat')
+        user = request.user
+        user_id = user.id
+        formdata = FormData.objects.filter(user=user_id).first()
+
+        # Access the specific fields
+        latitude = formdata.latitude
+        longitude = formdata.longitude
         url = 'https://power.larc.nasa.gov/api/temporal/daily/point'
         params = {
         'start': 20240101,
         'end': 20240930,
         'format': 'JSON',
-        'latitude': lat,
-        'longitude': lon,
+        'latitude': latitude,
+        'longitude': longitude,
         'parameters':'TS,T2M,PS,WS2M,CLOUD_AMT,WS10M',
         'community':'ag', 
         }
