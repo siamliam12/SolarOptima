@@ -1,0 +1,21 @@
+{
+  "title": "Our Key Problems",
+  "description": "Here are some of the key problems we aim to solve.",
+  "cards": [
+    {
+      "image": "/images/cloud-02.png",
+      "title": "Unpredictable Weather",
+      "description": "Description for problem 1."
+    },
+    {
+      "image": "/images/grass.png",
+      "title": "Lack of Scientific Agricultural Knowledge",
+      "description": "Description for problem 2."
+    },
+    {
+      "image": "/images/tornado.png",
+      "title": "Natural disasters",
+      "description": "Description for problem 3."
+    }
+  ]
+}

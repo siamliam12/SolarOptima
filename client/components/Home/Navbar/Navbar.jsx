@@ -6,7 +6,7 @@ const Navbar = () => {
     const [isOpen, setIsOpen] = useState(false);
 
     return (
-        <nav className="bg-gray-800 p-4">
+        <nav className="bg-transparent p-4">
             <div className="container mx-auto flex justify-between items-center">
                 {/* Logo */}
                 <div className="text-white text-xl font-bold">SolarOptima</div>

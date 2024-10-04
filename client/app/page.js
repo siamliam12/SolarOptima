@@ -1,5 +1,31 @@
-import Image from "next/image";
+import HeroSection from "@/components/Home/HeroSection/HeroSection";
+import Navbar from "@/components/Home/Navbar/Navbar";
+import "./page.css";
+import ProblemSection from "@/components/ProblemSection/ProblemSection";
 
 export default function Home() {
-    return <>Hello World</>;
+  const stars = Array.from({ length: 100 }, (_, i) => (
+    <div
+      key={i}
+      className="star"
+      style={{
+        top: `${Math.random() * 100}%`,
+        left: `${Math.random() * 100}%`,
+      }}
+    ></div>
+  ));
+
+  return (
+    <>
+      <div className="landing-page-hero-bg-container">
+        {stars}
+        <div className="landing-page-hero-bg-circle"></div>
+        <div className="landing-page-hero-bg-child">
+          <Navbar />
+          <HeroSection />
+        </div>
+      </div>
+      <ProblemSection />
+    </>
+  );
 }
