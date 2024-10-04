@@ -96,14 +96,16 @@ class Predictions:
         
         X, y_encoded, le = prepare_data(df)
         model = train_model(X, y_encoded)
+        crops =[] 
+        
+        input_data = [self.n,self.p,self.k,self.temperature,self.humidity,self.ph]
+        recommended_crops = recommend_crop(model, le, input_data)
 
-        while True:
-            input_data = [self.n,self.p,self.k,self.temperature,self.humidity,self.ph]
-            recommended_crops = recommend_crop(model, le, input_data)
-
-            print("\nTop 3 recommended crops for the given conditions:")
-            for crop, probability in recommended_crops:
-                return f"{crop}: {probability:.2f}"
+        print("\nTop 3 recommended crops for the given conditions:")
+        for crop, probability in recommended_crops:
+            # print(f"{crop}: {probability:.2f}")
+            crops.append({ 'title': crop,'value': probability })
+        return crops
 
         # print("Thank you for using the Crop Recommendation System!")
 

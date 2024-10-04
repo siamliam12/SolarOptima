@@ -16,13 +16,12 @@ from .new_crop_recommendation import Predictions
 @api_view(['GET','POST'])
 def get_power_data(request):
     if request.method == 'POST':
-        user = request.user
-        user_id = user.id
-        formdata = FormData.objects.filter(user=user_id).first()
+        # formdata = FormData.objects.filter(user=user_id).first()
 
-        # Access the specific fields
-        latitude = formdata.latitude
-        longitude = formdata.longitude
+        # # Access the specific fields
+        latitude = request.data.get('lat')
+        longitude = request.data.get('lon')
+        # print(latitude,longitude)
         url = 'https://power.larc.nasa.gov/api/temporal/daily/point'
         params = {
         'start': 20240101,
@@ -36,7 +35,7 @@ def get_power_data(request):
         response = requests.get(url, params=params)
         data = response.json()
         return Response(data)
-    
+ 
 
 
 @api_view(['GET', 'POST'])
@@ -51,36 +50,22 @@ def get_form_data(request):
             return Response(serializer.data, status=201)
         return Response(serializer.errors, status=400)
 
+
 @api_view(['GET', 'POST'])
 @authentication_classes([JWTAuthentication])
 @permission_classes([IsAuthenticated])
 def predict_crop(request):
-    if request.method == 'GET':
+    if request.method == 'POST':
         user = request.user
         user_id = user.id
         formdata = FormData.objects.filter(user=user_id).first()
+        print('test')
+        temperature = request.data.get('temperature')
+        humidity = request.data.get('humidity')
 
-        # Access the specific fields
-        latitude = formdata.latitude
-        longitude = formdata.longitude
-        url = 'https://power.larc.nasa.gov/api/temporal/monthly/point'
-        params = {
-        'start': 2022,
-        'end': 2022,
-        'parameters': 'T2M',
-        'format': 'JSON',
-        'latitude': latitude,
-        'longitude': longitude,
-        'parameters':'T10M_MIN_AVG,RH2M',
-        'community':'ag', 
-        }
-        response = requests.get(url, params=params)
-        data = response.json()
-        temperature = data['properties']['parameter']['T10M_MIN_AVG']['202201']
-        humidity = data['properties']['parameter']['RH2M']['202201']
         if formdata:
             crop = Predictions(formdata.nitrogen,formdata.phosphorous,formdata.potasium,temperature,humidity,formdata.ph)
-            # result = crop.main()
+            result = crop.main()
             # print(result)
-            return Response({'Crop':crop.main()})
+            return Response({'Crop':result})
         return Response({'Error': 'No form data found for this user.'}, status=404)
