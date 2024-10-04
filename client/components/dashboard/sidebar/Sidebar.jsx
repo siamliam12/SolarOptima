@@ -11,7 +11,7 @@ const sidebarItems = [
 
 const Sidebar = () => {
   return (
-    <div className="bg-gray-800 text-white w-52 h-screen p-4">
+    <div className="bg-gray-800 text-white w-52 h-[88.5vh] p-4 fixed top-[70px]">
       <ul>
         {sidebarItems.map((item, index) => (
           <li
