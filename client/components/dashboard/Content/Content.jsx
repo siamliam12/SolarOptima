@@ -6,8 +6,8 @@ import SplineChart from "../Spline/SplineChart";
 import DensityPlot from "../Density/DensityPlot";
 import ColumnChart from "../Column/ColumnChart";
 import OutcomeComponent from "../Outcome/OutcomeComponent";
-import { getSession } from "next-auth/react";
 import axios from "axios";
+import Cookies from "js-cookie";
 
 const getLastEntries = (data, lastNum) => {
   const entries = Object.entries(data || {});
@@ -24,8 +24,10 @@ const Dashboard = () => {
     const fetchData = async () => {
       setLoading(true);
       try {
-        const session = await getSession();
-        const accessToken = session?.accessToken;
+        const accessToken = Cookies.get("authToken");
+        if (!accessToken) {
+          throw new Error("No access token found");
+        }
         console.log(accessToken);
 
         const response = await axios.post(
@@ -36,8 +38,7 @@ const Dashboard = () => {
           },
           {
             headers: {
-              Authorization: `Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzI4MTc1ODM5LCJpYXQiOjE3MjgxMDM4MzksImp0aSI6IjI1Njk1YjU5YWI5NzQ0NzU4NWUxODUwYzIxMzJjMWVhIiwidXNlcl9pZCI6M30.Cgu1eKTxR1JgD7UAexCB9KBXwfgYLFyd0A4K2tvN7JA`,
-              // Authorization: `Bearer ${accessToken}`,
+              Authorization: `Bearer ${accessToken}`,
             },
           }
         );
@@ -66,7 +67,6 @@ const Dashboard = () => {
         <div className="bg-[#040936] border-[#151a44] shadow-xl text-white p-4 rounded-md flex flex-col justify-center items-center h-[200px]">
           <SplineChart
             title="Surface Temperature"
-            // chartData={solarData?.TS}
             chartData={getLastEntries(solarData?.TS, 50)}
           />
         </div>

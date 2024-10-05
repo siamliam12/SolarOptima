@@ -1,29 +1,25 @@
-"use client"
+"use client";
 
-import { useSession } from "next-auth/react";
 import { useRouter } from "next/navigation";
 import { useEffect } from "react";
+import Cookies from "js-cookie";
 
 const withAuth = (WrappedComponent) => {
   const AuthWrapper = (props) => {
-    const { data: session, status } = useSession();
     const router = useRouter();
+    const accessToken = Cookies.get("authToken");
 
     useEffect(() => {
-      if (status === "unauthenticated") {
+      if (!accessToken) {
         router.push("/login");
       }
-    }, [status, router]);
+    }, [accessToken, router]);
 
-    if (status === "loading") {
+    if (!accessToken) {
       return <div>Loading...</div>;
     }
 
-    if (status === "authenticated") {
-      return <WrappedComponent {...props} />;
-    }
-
-    return null;
+    return <WrappedComponent {...props} />;
   };
 
   AuthWrapper.displayName = `withAuth(${getDisplayName(WrappedComponent)})`;
@@ -31,7 +27,7 @@ const withAuth = (WrappedComponent) => {
 };
 
 function getDisplayName(WrappedComponent) {
-  return WrappedComponent.displayName || WrappedComponent.name || 'Component';
+  return WrappedComponent.displayName || WrappedComponent.name || "Component";
 }
 
 export default withAuth;

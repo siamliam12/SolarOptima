@@ -6,7 +6,7 @@ import Sidebar from "@/components/dashboard/sidebar/Sidebar";
 import withAuth from "@/lib/withAuth";
 import React, { useEffect, useState } from "react";
 import axios from "axios";
-import { getSession } from "next-auth/react";
+import Cookies from "js-cookie";
 
 const templatesData = [
   {
@@ -49,8 +49,10 @@ function Page() {
     const fetchData = async () => {
       setLoading(true);
       try {
-        const session = await getSession();
-        const accessToken = session?.accessToken;
+        const accessToken = Cookies.get("authToken");
+        if (!accessToken) {
+          throw new Error("No access token found");
+        }
         console.log(accessToken);
 
         const response = await axios.post(
@@ -119,4 +121,4 @@ function Page() {
   );
 }
 
-export default (Page);
+export default Page;

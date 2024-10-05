@@ -1,9 +1,6 @@
-"use client"
-
 import localFont from "next/font/local";
 import "./globals.css";
 // import Navbar from "@/components/Home/Navbar/Navbar";
-import { SessionProvider } from "next-auth/react";
 
 const geistSans = localFont({
   src: "./fonts/GeistVF.woff",
@@ -16,10 +13,10 @@ const geistMono = localFont({
   weight: "100 900",
 });
 
-// export const metadata = {
-//   title: "SolarOptima",
-//   description: "Nasa Space App Project by Team DHK Photon",
-// };
+export const metadata = {
+  title: "SolarOptima",
+  description: "Nasa Space App Project by Team DHK Photon",
+};
 
 export default function RootLayout({ children }) {
   return (
@@ -27,7 +24,7 @@ export default function RootLayout({ children }) {
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
       >
-        <SessionProvider>{children}</SessionProvider>
+        <>{children}</>
       </body>
     </html>
   );

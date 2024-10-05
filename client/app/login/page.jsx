@@ -2,7 +2,8 @@
 
 import { useState } from "react";
 import Link from "next/link";
-import { signIn } from "next-auth/react";
+import axios from "axios";
+import Cookies from "js-cookie";
 
 export default function LoginPage() {
   const [email, setEmail] = useState("");
@@ -11,15 +12,16 @@ export default function LoginPage() {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      const result = await signIn("credentials", {
-        redirect: false,
-        email,
-        password,
-      });
+      const response = await axios.post(
+        `https://solaroptima.onrender.com/auth/api/login/`,
+        { email, password }
+      );
 
-      if (result.error) {
-        console.error("Error logging in:", result.error);
+      if (response.data.error) {
+        console.error("Error logging in:", response.data.error);
       } else {
+        Cookies.set("authToken", response.data.access);
+        Cookies.set("refreshToken", response.data.refresh);
         window.location.href = "/dashboard";
       }
     } catch (error) {
