@@ -89,11 +89,20 @@ WSGI_APPLICATION = "api.wsgi.application"
 # Database
 # https://docs.djangoproject.com/en/5.0/ref/settings/#databases
 
+# DATABASES = {
+#    'default': dj_database_url.config(
+#         # Replace this value with your local database's connection string.
+#         default='postgresql://siamliam12:fHghsCAuWgJ35rPLteLYTdO2RSXRSzoY@dpg-cs04kjl2ng1s73em02sg-a.singapore-postgres.render.com/backendserver_lwxw',
+#         conn_max_age=600
+#     )
+# }
+
 DATABASES = {
-   'default': dj_database_url.config(
-        # Replace this value with your local database's connection string.
-        default='postgresql://siamliam12:fHghsCAuWgJ35rPLteLYTdO2RSXRSzoY@dpg-cs04kjl2ng1s73em02sg-a.singapore-postgres.render.com/backendserver_lwxw',
-        conn_max_age=600
+    'default': dj_database_url.config(
+        default='postgresql://siamliam12:ZHYDVs64chrhaTRmnbrAP44gZtxi7Ipb@dpg-cs09fk8gph6c73a4l4g0-a.singapore-postgres.render.com/server_wbon',
+        conn_max_age=600,
+        conn_health_checks=True,
+        ssl_require=True,
     )
 }
 
