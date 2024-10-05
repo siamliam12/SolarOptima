@@ -11,7 +11,7 @@ const SplineChart = ({title, chartData}) => {
     labels: ['January', 'February', 'March', 'April', 'May', 'June', 'July'],
     datasets: [
       {
-        label: 'Surface Temperature',
+        label: title,
         data: chartData,
         fill: false,
         borderColor: 'rgba(75,192,192,1)',
