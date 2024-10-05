@@ -36,12 +36,12 @@ const Navbar = () => {
               >
                 Services
               </a>
-              <a
+              {/* <a
                 href="#"
                 className="text-gray-300 hover:text-white py-2 lg:py-0"
               >
                 Contact
-              </a>
+              </a> */}
             </div>
           </div>
         </div>
