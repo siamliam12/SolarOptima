@@ -1,8 +1,11 @@
+"use client";
+
 import Navbar from "@/components/dashboard/Navbar/Navbar";
 import Sidebar from "@/components/dashboard/sidebar/Sidebar";
 import Explain from "@/components/ecogrow/explain/Explain";
 import Graph from "@/components/ecogrow/graph/Graph";
 import TableSection from "@/components/ecogrow/table/TableSection";
+import withAuth from "@/lib/withAuth";
 import React from "react";
 
 const explanations = [
@@ -84,4 +87,4 @@ function page() {
   );
 }
 
-export default page;
+export default withAuth(page);
