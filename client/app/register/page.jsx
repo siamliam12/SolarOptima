@@ -2,18 +2,31 @@
 
 import Link from "next/link";
 import { useState } from "react";
+import axios from "axios";
+import { useRouter } from "next/navigation";
 
 export default function RegisterPage() {
   const [username, setUsername] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const router = useRouter();
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    // Handle form submission logic here
-    console.log("Username:", username);
-    console.log("Email:", email);
-    console.log("Password:", password);
+    try {
+      const response = await axios.post("http://solaroptima.onrender.com/auth/api/register/", {
+        name: username,
+        email: email,
+        password: password,
+      });
+      if (response.status === 200) {
+        // Redirect to the desired URL after successful registration
+        router.push("/account-success");
+      }
+    } catch (error) {
+      console.error("Registration failed:", error);
+      // Handle error (e.g., show an error message to the user)
+    }
   };
 
   return (

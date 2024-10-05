@@ -31,7 +31,7 @@ const Navbar = () => {
                 About
               </a>
               <a
-                href="#"
+                href="/#features"
                 className="text-gray-300 hover:text-white py-2 lg:py-0"
               >
                 Services

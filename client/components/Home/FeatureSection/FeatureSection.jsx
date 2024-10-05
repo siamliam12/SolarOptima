@@ -5,7 +5,7 @@ import data from "@/data/features.json";
 
 export default function Features() {
   return (
-    <div className="min-h-screen py-12 flex flex-col items-center justify-center bg-[#000000] text-white">
+    <div id="features" className="min-h-screen py-12 flex flex-col items-center justify-center bg-[#000000] text-white">
       <h1 className="text-3xl font-bold mb-12 text-center text-white uppercase tracking-wider">
         Features
       </h1>
