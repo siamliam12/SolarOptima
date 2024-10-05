@@ -1,7 +1,7 @@
 databases:
   - name: solarOptima
     plan: free
-    databaseName: backendServer
+    databaseName: backendserver_lwxw
     user: siamliam12
 
 services:
