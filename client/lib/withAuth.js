@@ -5,7 +5,7 @@ import { useRouter } from "next/navigation";
 import { useEffect } from "react";
 
 const withAuth = (WrappedComponent) => {
-  return (props) => {
+  const AuthWrapper = (props) => {
     const { data: session, status } = useSession();
     const router = useRouter();
 
@@ -25,6 +25,13 @@ const withAuth = (WrappedComponent) => {
 
     return null;
   };
+
+  AuthWrapper.displayName = `withAuth(${getDisplayName(WrappedComponent)})`;
+  return AuthWrapper;
 };
+
+function getDisplayName(WrappedComponent) {
+  return WrappedComponent.displayName || WrappedComponent.name || 'Component';
+}
 
 export default withAuth;

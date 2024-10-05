@@ -39,22 +39,22 @@ const authOptions = {
         token.refreshToken = user.refreshToken;
       }
 
-      // Refresh the access token if it has expired
-      const shouldRefreshTime = Math.round((token.exp - 60 * 60) * 1000); // 1 hour before expiry
-      if (Date.now() > shouldRefreshTime) {
-        try {
-          const response = await axios.post(
-            `${process.env.NEXT_APP_API_URL}/auth/api/refresh/`,
-            {
-              refresh: token.refreshToken,
-            }
-          );
-          const { access } = response.data;
-          token.accessToken = access;
-        } catch (error) {
-          console.error("Error refreshing access token:", error);
-        }
-      }
+      // Remove the token refresh logic to prevent automatic expiration
+      // const shouldRefreshTime = Math.round((token.exp - 60 * 60) * 1000); // 1 hour before expiry
+      // if (Date.now() > shouldRefreshTime) {
+      //   try {
+      //     const response = await axios.post(
+      //       `${process.env.NEXT_APP_API_URL}/auth/api/refresh/`,
+      //       {
+      //         refresh: token.refreshToken,
+      //       }
+      //     );
+      //     const { access } = response.data;
+      //     token.accessToken = access;
+      //   } catch (error) {
+      //     console.error("Error refreshing access token:", error);
+      //   }
+      // }
 
       return token;
     },

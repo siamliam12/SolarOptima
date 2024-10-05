@@ -50,18 +50,18 @@ function Page() {
       setLoading(true);
       try {
         const session = await getSession();
-        const accessToken = session?.access;
+        const accessToken = session?.accessToken;
+        console.log(accessToken);
 
         const response = await axios.post(
-          `${process.env.NEXT_APP_API_URL}/recommend-crop`,
-
+          `https://solaroptima.onrender.com/recommend-crop`,
           {
             temperature: 23.6,
             humidity: 60.3,
           },
           {
             headers: {
-              Authorization: `Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzI4MTU3MzY1LCJpYXQiOjE3MjgwODUzNjUsImp0aSI6IjBhNGJkNTVlOWFkMzQ5ZTViZTE1MzY5NWQ0MjVmODNiIiwidXNlcl9pZCI6Mn0.9U3dXNnWR_wOGCmiZwv0iX3AXc_z2cmqTC5eQJFT8P4 `,
+              Authorization: `Bearer ${accessToken}`,
             },
           }
         );
@@ -89,9 +89,9 @@ function Page() {
       <Navbar />
       <div className="flex">
         <Sidebar className="fixed" />
-        <main className="flex-1 p-4 bg-[#04092f] h-full">
+        <main className="flex-1 p-4 bg-[#04092f] h-full text-white">
           <div className="p-8 min-h-screen h-full w-auto mt-[70px] overflow-scroll scrollbar-hide ml-52">
-            {templatesData.map((template, index) => (
+            {/* {templatesData.map((template, index) => (
               <CommonTemplate
                 key={index}
                 imageUrl={template.imageUrl}
@@ -100,14 +100,14 @@ function Page() {
                 data={template.data}
                 imagePosition={template.imagePosition}
               />
-            ))}
+            ))} */}
             <div className="mt-8">
               <h2 className="text-2xl font-bold mb-4">Crop Data</h2>
               <ul>
+                <h4>Most Valuable Crops</h4>
                 {cropData.map((crop, index) => (
                   <li key={index} className="mb-2">
-                    <span className="font-semibold">{crop.title}:</span>{" "}
-                    {crop.value}
+                    <span className="font-semibold">{crop.title}</span>
                   </li>
                 ))}
               </ul>
