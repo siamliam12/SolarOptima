@@ -1,28 +1,41 @@
 "use client";
 
-import React from 'react';
-import { Bar } from 'react-chartjs-2';
-import { Chart as ChartJS, CategoryScale, LinearScale, BarElement, Title, Tooltip, Legend } from 'chart.js';
+import React from "react";
+import { Bar } from "react-chartjs-2";
+import {
+  Chart as ChartJS,
+  CategoryScale,
+  LinearScale,
+  BarElement,
+  Title,
+  Tooltip,
+  Legend,
+} from "chart.js";
 
-ChartJS.register(CategoryScale, LinearScale, BarElement, Title, Tooltip, Legend);
+ChartJS.register(
+  CategoryScale,
+  LinearScale,
+  BarElement,
+  Title,
+  Tooltip,
+  Legend
+);
 
-const ColumnChart = ({ title, labels, data1, data2 }) => {
-  const data = {
+const ColumnChart = ({ title, data }) => {
+  // Transform the data into labels and data points
+  const labels = Object.keys(data);
+  const values = Object.values(data);
+
+  const chartData = {
     labels: labels,
     datasets: [
       {
-        label: 'Dataset 1',
-        data: data1,
-        backgroundColor: 'rgba(75, 192, 192, 0.6)',
-        borderColor: 'rgba(75, 192, 192, 1)',
+        label: "Dataset",
+        data: values,
+        backgroundColor: "rgba(75, 192, 192, 0.6)",
+        borderColor: "rgba(75, 192, 192, 1)",
         borderWidth: 1,
-      },
-      {
-        label: 'Dataset 2',
-        data: data2,
-        backgroundColor: 'rgba(192, 75, 75, 0.6)',
-        borderColor: 'rgba(192, 75, 75, 1)',
-        borderWidth: 1,
+        display: false,
       },
     ],
   };
@@ -40,17 +53,17 @@ const ColumnChart = ({ title, labels, data1, data2 }) => {
     },
     scales: {
       x: {
-        display: false,
+        display: true,
         title: {
-          display: false,
-          text: 'Category',
+          display: true,
+          text: "Date",
         },
       },
       y: {
-        display: false,
+        display: true,
         title: {
-          display: false,
-          text: 'Value',
+          display: true,
+          text: "Value",
         },
         beginAtZero: true, // Ensure the y-axis starts at zero
       },
@@ -58,8 +71,10 @@ const ColumnChart = ({ title, labels, data1, data2 }) => {
   };
 
   return (
-    <div className="w-full h-[500px]"> {/* Adjust the width and height as needed */}
-      <Bar data={data} options={options} />
+    <div className="w-full h-[500px]">
+      {" "}
+      {/* Adjust the width and height as needed */}
+      <Bar data={chartData} options={options} />
     </div>
   );
 };

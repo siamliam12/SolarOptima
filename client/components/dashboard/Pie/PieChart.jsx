@@ -6,13 +6,17 @@ import { Chart as ChartJS, ArcElement, Tooltip, Legend } from "chart.js";
 
 ChartJS.register(ArcElement, Tooltip, Legend);
 
-const PieChart = () => {
-  const data = {
-    labels: ["Red", "Blue", "Yellow", "Green", "Purple", "Orange"],
+const PieChart = ({ data }) => {
+  // Transform the data into the format required by the Pie chart
+  const labels = Object.keys(data);
+  const values = Object.values(data);
+
+  const chartData = {
+    labels: labels,
     datasets: [
       {
         label: "# of Votes",
-        data: [12, 19, 3, 5, 2, 3],
+        data: values,
         backgroundColor: [
           "rgba(255, 99, 132, 0.2)",
           "rgba(54, 162, 235, 0.2)",
@@ -55,7 +59,7 @@ const PieChart = () => {
     },
   };
 
-  return <Pie data={data} options={options} />;
+  return <Pie data={chartData} options={options} />;
 };
 
 export default PieChart;

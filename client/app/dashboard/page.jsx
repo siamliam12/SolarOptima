@@ -22,4 +22,4 @@ function Page() {
   );
 }
 
-export default withAuth(Page);
+export default (Page);

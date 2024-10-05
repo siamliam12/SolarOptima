@@ -9,9 +9,10 @@ import OutcomeComponent from "../Outcome/OutcomeComponent";
 import { getSession } from "next-auth/react";
 import axios from "axios";
 
-const getLast50Entries = (data) => {
+const getLastEntries = (data, lastNum) => {
   const entries = Object.entries(data || {});
-  const last100Entries = entries.length > 50 ? entries.slice(-50) : entries;
+  const last100Entries =
+    entries.length > lastNum ? entries.slice(-1 * lastNum) : entries;
   return Object.fromEntries(last100Entries);
 };
 
@@ -35,7 +36,8 @@ const Dashboard = () => {
           },
           {
             headers: {
-              Authorization: `Bearer ${accessToken}`,
+              Authorization: `Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzI4MTc1ODM5LCJpYXQiOjE3MjgxMDM4MzksImp0aSI6IjI1Njk1YjU5YWI5NzQ0NzU4NWUxODUwYzIxMzJjMWVhIiwidXNlcl9pZCI6M30.Cgu1eKTxR1JgD7UAexCB9KBXwfgYLFyd0A4K2tvN7JA`,
+              // Authorization: `Bearer ${accessToken}`,
             },
           }
         );
@@ -65,23 +67,23 @@ const Dashboard = () => {
           <SplineChart
             title="Surface Temperature"
             // chartData={solarData?.TS}
-            chartData={getLast50Entries(solarData?.TS)}
+            chartData={getLastEntries(solarData?.TS, 50)}
           />
         </div>
         <div className="bg-[#040936] border-[#151a44] border shadow-xl text-white p-4 rounded-md flex flex-col justify-center items-center h-[200px]">
-          <PieChart />
+          <PieChart data={getLastEntries(solarData?.CLOUD_AMT, 25)} />
         </div>
         <div className="bg-[#040936] border-[#151a44] shadow-xl text-white p-4 rounded-md flex flex-col justify-center items-center h-[200px]">
           <SplineChart
             title="Temperature 2m"
-            chartData={[81, 65, 56, 59, 80, 55, 40]}
+            chartData={getLastEntries(solarData?.T2M, 50)}
           />
         </div>
         <div className="bg-[#040936] border-[#151a44] shadow-xl text-white p-4 rounded-md flex flex-col justify-center items-center h-[200px]">
           <DensityPlot
-            title="Surface Temperature"
-            data1={[65, 59, 80, 81, 56, 55, 40]}
-            data2={[28, 48, 40, 19, 86, 27, 90]}
+            title={"Wind speed at 2 Meters & Wind speed at 10 Meters"}
+            data1={getLastEntries(solarData?.WS2M, 50)}
+            data2={getLastEntries(solarData?.WS10M, 50)}
             labels={[
               "January",
               "February",
@@ -109,8 +111,7 @@ const Dashboard = () => {
               "June",
               "July",
             ]}
-            data1={[65, 59, 80, 81, 56, 55, 40]}
-            data2={[28, 48, 40, 19, 86, 27, 90]}
+            data={getLastEntries(solarData?.PS, 25)}
           />
         </div>
       </div>
