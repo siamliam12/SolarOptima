@@ -1,3 +1,5 @@
+"use client";
+
 import Footer from "@/components/Home/Footer/Footer";
 import Navbar from "@/components/About/Navbar/Navbar";
 import React from "react";
@@ -80,39 +82,18 @@ function Page() {
             farmers adapt to climate change and safeguard their livelihoods.
           </li>
         </ul>
-        <h2 className="text-3xl font-semibold mb-4">Tech Stack</h2>
-        <ul className="list-disc list-inside text-lg mb-6">
-          <li>NextJs</li>
-          <li>Django</li>
-          <li>Scikit-Learn</li>
-        </ul>
-        <h2 className="text-3xl font-semibold mb-4">Installation</h2>
-        <h3 className="text-2xl font-semibold mb-2">Install Client with npm</h3>
-        <pre className="bg-gray-800 text-white p-4 rounded mb-6">
-          <code>
-            cd client
-            <br />
-            npm i
-          </code>
-        </pre>
-        <h3 className="text-2xl font-semibold mb-2">Run the Frontend app</h3>
-        <pre className="bg-gray-800 text-white p-4 rounded mb-6">
-          <code>npm run dev</code>
-        </pre>
-        <h3 className="text-2xl font-semibold mb-2">
-          Install Backend with pip
-        </h3>
-        <pre className="bg-gray-800 text-white p-4 rounded mb-6">
-          <code>
-            cd backend
-            <br />
-            pip install -r requirements.txt
-          </code>
-        </pre>
-        <h3 className="text-2xl font-semibold mb-2">Run the Backend Server</h3>
-        <pre className="bg-gray-800 text-white p-4 rounded mb-6">
-          <code>python manage.py runserver</code>
-        </pre>
+        <h2 className="text-3xl font-semibold mb-4">Project Video</h2>
+        <p className="text-lg mb-6">
+          Watch our project video on YouTube:{" "}
+          <a
+            href="https://www.youtube.com/watch?v=EuQNrsUm4KY"
+            className="text-blue-400 underline"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            SolarOptima Project Video
+          </a>
+        </p>
         <h2 className="text-3xl font-semibold mb-4">API Reference</h2>
         <ul className="list-disc list-inside text-lg mb-6">
           <li>
