@@ -26,6 +26,11 @@ Solar Optima combines NASA satellite and geospatial data with ML to analyze envi
 
 - Resilience: The app predicts weather and water risks, helping farmers adapt to climate change and safeguard their livelihoods.
 
+# Our Future Aim For This Project:
+1.	Aqua Smart: This feature uses real-time location-specific data, such as evapotranspiration rates and weather patterns, to predict the most efficient use of water for irrigation. It helps farmers optimize water usage, ensuring that crops receive the right amount of water without waste, enhancing both sustainability and productivity.
+2.	Climate Guard: Utilizing satellite data from NASA, this feature generates a heatmap that highlights areas at risk of upcoming floods or droughts. By providing early warnings and visual insights, it helps farmers take preventive measures to protect their crops from extreme weather conditions.
+
+
 # Tech Stack
 - NextJs
 - Django
