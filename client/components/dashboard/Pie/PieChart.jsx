@@ -15,7 +15,7 @@ const PieChart = ({ data }) => {
     labels: labels,
     datasets: [
       {
-        label: "# of Votes",
+        label: "% of cloud amount",
         data: values,
         backgroundColor: [
           "rgba(255, 99, 132, 0.2)",
