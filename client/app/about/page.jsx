@@ -82,6 +82,23 @@ function Page() {
             farmers adapt to climate change and safeguard their livelihoods.
           </li>
         </ul>
+        <h2 className="text-3xl font-semibold mb-4">Our Future Aim</h2>
+        <h3 className="text-2xl font-semibold mb-2">Aqua Smart</h3>
+        <p className="text-lg mb-6">
+          This feature uses real-time location-specific data, such as
+          evapotranspiration rates and weather patterns, to predict the most
+          efficient use of water for irrigation. It helps farmers optimize water
+          usage, ensuring that crops receive the right amount of water without
+          waste, enhancing both sustainability and productivity.
+        </p>
+        <h3 className="text-2xl font-semibold mb-2">Climate Guard</h3>
+        <p className="text-lg mb-6">
+          Utilizing satellite data from NASA, this feature generates a heatmap
+          that highlights areas at risk of upcoming floods or droughts. By
+          providing early warnings and visual insights, it helps farmers take
+          preventive measures to protect their crops from extreme weather
+          conditions.
+        </p>
         <h2 className="text-3xl font-semibold mb-4">Project Video</h2>
         <p className="text-lg mb-6">
           Watch our project video on YouTube:{" "}
