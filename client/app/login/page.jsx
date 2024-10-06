@@ -76,6 +76,11 @@ export default function LoginPage() {
             Sign up
           </Link>
         </p>
+        <div className="mt-6 p-4 bg-[#2A2A4A] rounded">
+          <h3 className="text-lg font-semibold mb-2">Default Login Credentials</h3>
+          <p>Email: <span className="font-mono">saadmangalib@gmail.com</span></p>
+          <p>Password: <span className="font-mono">12345678</span></p>
+        </div>
       </div>
     </div>
   );
