@@ -13,12 +13,12 @@ function HeroSection() {
         maximize crop yields with data-driven precision.{" "}
       </p>
       <div className="flex space-x-4">
-        <button className="bg-blue-500 text-white py-2 px-4 rounded hover:bg-blue-700">
+        <a className="bg-blue-500 text-white py-2 px-4 rounded hover:bg-blue-700" href="/dashboard">
           Try SolarOptima
-        </button>
-        <button className="bg-gray-500 text-white py-2 px-4 rounded hover:bg-gray-700">
+        </a>
+        <a className="bg-gray-500 text-white py-2 px-4 rounded hover:bg-gray-700" href="/login">
           Sign In
-        </button>
+        </a>
       </div>
     </div>
   );
