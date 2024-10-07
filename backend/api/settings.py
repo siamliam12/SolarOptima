@@ -16,7 +16,7 @@ SECRET_KEY = "django-insecure-gw(y%mm6gx+!5$pxc#&at9xj07v#u9ihp=*_izd_5v&)v*5%i6
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ["*"]
+ALLOWED_HOSTS = ["*",'https://solar-optima.vercel.app']
 
 
 # Application definition
